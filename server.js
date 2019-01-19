@@ -5,10 +5,15 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const DATABASE_URL = require('./config.js');
+
 // API routes
 const api = require('./server/routes/api');
 
 const app = express();
+
+mongoose.connect(DATABASE_URL);
+mongoose.Promise = global.Promise;
 
 // Parsers for POST 
 app.use(bodyParser.json());
