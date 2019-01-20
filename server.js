@@ -4,6 +4,7 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const UserModel = require('./schemas/users.schema');
 
 const DATABASE_URL = require('./config.js');
 

@@ -14,7 +14,7 @@ export class CreateUserService {
     })
   };
 
-  apiUrl = 'http://localhost:3000/users';
+  apiUrl = '/api/users';
   constructor(private http: HttpClient) {}
 
   createUser(user: User): Observable<User> {

@@ -10,5 +10,7 @@ const userSchema = new Schema({
   creationDate: Number
 });
 
-const User = mongoose.model('User', userSchema);
-module.exports = User;
+const UserModel = mongoose.model('UserModel', userSchema);
+module.exports = UserModel;
+
+export {};

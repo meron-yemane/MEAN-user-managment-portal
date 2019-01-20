@@ -13,7 +13,7 @@ export class UserService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'http://localhost:3000/users';
+  apiUrl = 'api/users';
   constructor(private http: HttpClient) {}
 
   getUsers() {
