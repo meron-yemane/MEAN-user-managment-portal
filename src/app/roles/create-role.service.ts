@@ -13,7 +13,7 @@ export class CreateRoleService {
     })
   };
 
-  apiUrl = 'http://localhost:3000/roles';
+  apiUrl = 'api/roles';
 
   constructor(private http: HttpClient) { }
 
