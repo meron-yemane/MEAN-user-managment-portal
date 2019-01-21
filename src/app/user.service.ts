@@ -21,6 +21,7 @@ export class UserService {
   }
 
   getSingleUser(userId: number) {
+    console.log('getSingle being called');
     return this.http.get(`${this.apiUrl}` + userId);
   }
 

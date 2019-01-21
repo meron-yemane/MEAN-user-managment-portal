@@ -28,7 +28,7 @@
     <div class="col-6 col-sm-4" *ngFor="let user of filteredUsers">
       <div class="card order-secondary mb-3 shadow p-3 mb-5 bg-white rounded">
         <div class="card-title">
-          <a routerLink="/users/{{ user.id }}">{{ user.name }}</a>
+          <a routerLink="/users/{{ user._id }}">{{ user.name }}</a>
         </div>      
       </div>      
     </div>
