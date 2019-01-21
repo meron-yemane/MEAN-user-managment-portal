@@ -13,7 +13,7 @@ export class UserService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'api/users/';
+  apiUrl = '/api/users/';
   constructor(private http: HttpClient) {}
 
   getUsers() {
@@ -21,7 +21,6 @@ export class UserService {
   }
 
   getSingleUser(userId: number) {
-    console.log('getSingle being called');
     return this.http.get(`${this.apiUrl}` + userId);
   }
 
