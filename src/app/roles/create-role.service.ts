@@ -13,7 +13,7 @@ export class CreateRoleService {
     })
   };
 
-  apiUrl = 'api/roles';
+  apiUrl = '/api/roles';
 
   constructor(private http: HttpClient) { }
 

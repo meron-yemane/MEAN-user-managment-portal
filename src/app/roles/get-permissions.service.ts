@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GetPermissionsService {
-  apiUrl = 'api/permissions';
+  apiUrl = '/api/permissions';
   constructor(private http: HttpClient) { }
 
   getPermissions() {
