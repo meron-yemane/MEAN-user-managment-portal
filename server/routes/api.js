@@ -99,6 +99,18 @@ router.patch("/users/:id", function(req, res) {
 
 });
 
+router.patch("/users/delete/:id", function(req, res) {
+  let id = req.params.id;
+  UserModel.findByIdAndUpdate(id, {isActive: 'false'}, function(err) {
+    if (err) {
+      handleError(res, err.message, "Failed to update user");
+    } else {
+      return res.status(200).json();
+    }
+  });
+
+});
+
 router.put("/users/:id", function(req, res) {
 });
 

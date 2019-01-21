@@ -12,7 +12,7 @@ export class DeleteUserService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'http://localhost:3000/users/';
+  apiUrl = '/api/users/delete/';
   constructor(
     private http: HttpClient,
     private router: Router
