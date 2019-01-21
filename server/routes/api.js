@@ -23,6 +23,18 @@ router.get("/users", function(req, res) {
   });
 });
 
+router.get("/users/:id", function(req, res) {
+  console.log(req)
+  let id = req;
+  UserModel.findById(id, function(err, user) {
+    if (err) {
+      handleError(res, err.message, "Failed to get user");
+    } else {
+      return res.status(200).json(user)
+    }
+  });
+});
+
 router.get("/roles", function(req, res) {
   console.log("Inside get roles");
   RolesModel.find({}, function(err, roles) {
@@ -50,7 +62,7 @@ router.post("/roles", function(req, res) {
     if (err) {
       throw err;
     } else {
-      return res.status(201);
+      return res.status(201).json();
     }
   });
 });
@@ -72,13 +84,14 @@ router.post("/users", function(req, res) {
     if (err) {
       throw err;
     } else {
-      res.status(200);
+      res.status(200).json();
     }
   });
 });
 
 router.patch("/users/:id", function(req, res) {
-
+  let query = { "_id": req._id };
+  console.log();
 });
 
 router.put("/users/:id", function(req, res) {

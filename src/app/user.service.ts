@@ -13,11 +13,15 @@ export class UserService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'api/users';
+  apiUrl = 'api/users/';
   constructor(private http: HttpClient) {}
 
   getUsers() {
     return this.http.get(`${this.apiUrl}`);
+  }
+
+  getSingleUser(userId: number) {
+    return this.http.get(`${this.apiUrl}` + userId);
   }
 
   createUser(user: User): Observable<User> {

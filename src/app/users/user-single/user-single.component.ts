@@ -19,10 +19,9 @@ export class UserSingleComponent implements OnInit {
     this.route.params.subscribe(params => {
       const userId = params['userid'];
       this.userService
-        .getUsers()
-        .subscribe((users) => {
-          this.user = users[userId];
-          this.roles = this.user.roles.toString().replace(/,/g, ', ');
+        .getSingleUser(userId)
+        .subscribe(user => {
+          this.user = user;
         });
     });
   }
