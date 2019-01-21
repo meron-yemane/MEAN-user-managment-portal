@@ -12,16 +12,7 @@ import { GetRolesService } from 'src/app/roles/get-roles.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-  user: User = {
-    name: null,
-    email: null,
-    login: null,
-    roles: [],
-    isActive: 'true',
-    creationDate: null,
-    id: undefined
-  };
-
+  user;
   roles: {};
   rolesError: Boolean = false;
   showSuccessAlert: Boolean = false;
@@ -49,9 +40,10 @@ export class UserEditComponent implements OnInit {
     this.route.params.subscribe(params => {
       const userId = params['userid'];
       this.userService
-        .getUsers()
-        .subscribe(
-          users => this.user = users[userId],
+        .getSingleUser(userId)
+        .subscribe(user => {
+          this.user = user;
+        },
           err => console.log(err),
           () => {
             this.getRolesService.getRoles()

@@ -3,11 +3,11 @@
     <div *ngIf="user">
       <div class="row"> 
         <h2>{{ user.name }}</h2>
-        <a class="ml-auto" routerLink="/users/{{ user.id }}/edit">
+        <a class="ml-auto" routerLink="/users/{{ user._id }}/edit">
           <button type="button" class="btn btn-primary">Edit User</button>
         </a>
       </div>  
-      <h5>Roll(s): {{ roles }}</h5>
+      <h5>Roll(s): {{ user.roles }}</h5>
       <h5>Email: {{ user.email }}</h5>
       <h5>Username: {{ user.login }}</h5>
     </div>  
