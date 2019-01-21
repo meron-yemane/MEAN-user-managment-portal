@@ -24,7 +24,6 @@ router.get("/users", function(req, res) {
 });
 
 router.get("/users/:id", function(req, res) {
-  console.log(req.params);
   let id = req.params.id;
   UserModel.findById(id, function(err, user) {
     if (err) {
@@ -36,7 +35,6 @@ router.get("/users/:id", function(req, res) {
 });
 
 router.get("/roles", function(req, res) {
-  console.log("Inside get roles");
   RolesModel.find({}, function(err, roles) {
     if (err) {
       handleError(res, err.message, "Failed to get roles");
@@ -90,8 +88,15 @@ router.post("/users", function(req, res) {
 });
 
 router.patch("/users/:id", function(req, res) {
-  let query = { "_id": req._id };
-  console.log();
+  let id = req.params.id;
+  UserModel.findByIdAndUpdate(id, req.body, function(err) {
+    if (err) {
+      handleError(res, err.message, "Failed to update user");
+    } else {
+      return res.status(200).json();
+    }
+  });
+
 });
 
 router.put("/users/:id", function(req, res) {

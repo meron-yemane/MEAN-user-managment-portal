@@ -11,14 +11,14 @@ export class EditUserService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'http://localhost:3000/users/';
+  apiUrl = '/api/users/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   editUser(user: Object, userId: number): Observable<Object> {
-    return this.http.put<Object>(`${this.apiUrl}` + userId, user, this.httpOptions);
+    return this.http.patch<Object>(`${this.apiUrl}` + userId, user, this.httpOptions);
   }
 
 }
