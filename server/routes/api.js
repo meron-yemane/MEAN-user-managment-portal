@@ -24,8 +24,8 @@ router.get("/users", function(req, res) {
 });
 
 router.get("/users/:id", function(req, res) {
-  console.log(req)
-  let id = req;
+  console.log(req.params);
+  let id = req.params.id;
   UserModel.findById(id, function(err, user) {
     if (err) {
       handleError(res, err.message, "Failed to get user");
