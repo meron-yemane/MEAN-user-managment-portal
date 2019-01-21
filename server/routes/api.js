@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { UserModel } = require('/Users/meronyemane/Desktop/projects/MEANuser-management-portal/schemas/users.schema.js');
-const { RolesModel } = require('/Users/meronyemane/Desktop/projects/MEANuser-management-portal/schemas/roles.schema.js');
-const { PermissionsModel } = require('/Users/meronyemane/Desktop/projects/MEANuser-management-portal/schemas/permissions.schema.js');
+const {UserModel} = require('../../schemas/users.schema.js');
+const { RolesModel } = require('../../schemas/roles.schema.js');
+const { PermissionsModel } = require('../../schemas/permissions.schema.js');
 // check if GET api listening
 router.get('/', (req, res) => {
   res.send('api is working properly');
