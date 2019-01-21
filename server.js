@@ -1,19 +1,19 @@
+require('dotenv').config();
 // Dependencies
 const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const UserModel = require('./schemas/users.schema');
 
-const DATABASE_URL = require('./config.js');
+const {DATABASE_URL} = require('./config');
 
 // API routes
 const api = require('./server/routes/api');
 
 const app = express();
 
-mongoose.connect(DATABASE_URL);
+mongoose.connect(DATABASE_URL, {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 
 // Parsers for POST 
@@ -35,7 +35,8 @@ const port = process.env.PORT || '3000';
 app.set('port', port);
 
 // Create HTTP server
-const server = http.createServer(app);
+let server;
+server = http.createServer(app);
 
 // Listen on designated port
 server.listen(port, () => console.log(`API running on localhost:${port}`));

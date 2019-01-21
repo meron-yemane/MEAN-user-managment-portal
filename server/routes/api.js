@@ -1,8 +1,8 @@
 const express = require('express');
-const UserModel = require('./schemas/users.schema');
-const RolesModel = require('./schemas/roles.schema');
 const router = express.Router();
-
+const { UserModel } = require('/Users/meronyemane/Desktop/projects/MEANuser-management-portal/schemas/users.schema.js');
+const { RolesModel } = require('/Users/meronyemane/Desktop/projects/MEANuser-management-portal/schemas/roles.schema.js');
+const { PermissionsModel } = require('/Users/meronyemane/Desktop/projects/MEANuser-management-portal/schemas/permissions.schema.js');
 // check if GET api listening
 router.get('/', (req, res) => {
   res.send('api is working properly');
@@ -13,55 +13,75 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
-app.get("/api/users", function(req, res) {
+router.get("/users", function(req, res) {
   UserModel.find({}, function(err, users) {
     if (err) {
       handleError(res, err.message, "Failed to get users");
     } else {
-      res.status(200).json(users);
+      return res.status(201).json(users);
     }
   });
 });
 
-app.get("/api/roles", function(req, res) {
+router.get("/roles", function(req, res) {
+  console.log("Inside get roles");
   RolesModel.find({}, function(err, roles) {
     if (err) {
-      handleError(res, err.message, "Failed to get users");
+      handleError(res, err.message, "Failed to get roles");
     } else {
       res.status(200).json(roles);
     }
   });  
 });
 
-app.post("/api/roles", function(req, res) {
+router.get("/permissions", function(req, res) {
+  PermissionsModel.find({}, function(err, permissions) {
+    if (err) {
+      handleError(res, err.message, "Failed to get permissions");
+    } else {
+      res.status(200).json(permissions[0].permission);
+    }
+  });  
+});
+
+router.post("/roles", function(req, res) {
   const newRole = RolesModel(req.body);
-  if (err) {
-    handleError(res, "Invalid user input", 400);
-  } else {
-    newRole.save(function(err) {
-      if (err) throw err;
-
-    });
-  }
+  newRole.save(function(err) {
+    if (err) {
+      throw err;
+    } else {
+      return res.status(201);
+    }
+  });
 });
 
-app.post("/api/users", function(req, res) {
+router.post("/permissions", function(req, res) {
+  const newPermission = PermissionsModel(req.body);
+  newPermission.save(function(err) {
+    if (err) {
+      throw err;
+    } else {
+      return res.status(201);
+    }
+  });
+});
+
+router.post("/users", function(req, res) {
   const newUser = UserModel(req.body);
-  if (err) {
-    handleError(res, "Invalid user input", 400);
-  } else {
-    newUser.save(function(err) {
-      if (err) throw err;
-
-    });
-  }
+  newUser.save(function(err) {
+    if (err) {
+      throw err;
+    } else {
+      res.status(200);
+    }
+  });
 });
 
-app.patch("/api/users/:id", function(req, res) {
+router.patch("/users/:id", function(req, res) {
 
 });
 
-app.put("/api/users/:id", function(req, res) {
+router.put("/users/:id", function(req, res) {
 });
 
 module.exports = router;

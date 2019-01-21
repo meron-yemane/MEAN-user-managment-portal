@@ -4,13 +4,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   name: String,
   email: String,
-  password: String,
+  login: String,
   roles: [String],
   isActive: String,
   creationDate: Number
 });
 
 const UserModel = mongoose.model('UserModel', userSchema);
-module.exports = UserModel;
+module.exports = {UserModel};
 
-export {};
