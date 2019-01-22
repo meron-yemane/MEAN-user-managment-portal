@@ -9,6 +9,10 @@ export class GetRolesService {
 
   constructor(private http: HttpClient) { }
 
+  getSingleRole(roleId: number) {
+    return this.http.get(`${this.apiUrl}` + roleId);
+  }
+
   getRoles() {
     return this.http.get(`${this.apiUrl}`);
   }
