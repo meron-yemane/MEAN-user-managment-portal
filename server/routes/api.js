@@ -122,7 +122,16 @@ router.patch("/users/delete/:id", function(req, res) {
 
 });
 
-router.put("/users/:id", function(req, res) {
+router.patch("/roles/delete/:id", function(req, res) {
+  let id = req.params.id;
+  RolesModel.findByIdAndUpdate(id, {isActive: 'false'}, function(err) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete role");
+    } else {
+      return res.status(200).json();
+    }
+  });
+
 });
 
 module.exports = router;

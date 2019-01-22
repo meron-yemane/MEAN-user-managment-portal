@@ -10,7 +10,7 @@ export class DeleteRoleService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'http://localhost:3000/roles/';
+  apiUrl = '/api/roles/delete';
   constructor(
     private http: HttpClient,
   ) { }
