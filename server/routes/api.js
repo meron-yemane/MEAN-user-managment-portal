@@ -56,11 +56,11 @@ router.get("/roles", function(req, res) {
 });
 
 router.get("/permissions", function(req, res) {
-  PermissionsModel.find({}, function(err, permissions) {
+  PermissionsModel.findOne({}, function(err, permissions) {
     if (err) {
       handleError(res, err.message, "Failed to get permissions");
     } else {
-      res.status(200).json(permissions[0].permission);
+      res.status(200).json(permissions.permission);
     }
   });  
 });
