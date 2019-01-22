@@ -11,13 +11,7 @@ import { GetPermissionsService } from '../get-permissions.service';
   styleUrls: ['./roles-single.component.scss']
 })
 export class RolesSingleComponent implements OnInit {
-  role: Role = {
-    name: null,
-    permissions: [],
-    isActive: 'true',
-    id: null
-  };
-
+  role;
   permissions: {};
   permissionsError: Boolean = false;
   showSuccessAlert: Boolean = false;
@@ -33,14 +27,14 @@ export class RolesSingleComponent implements OnInit {
     this.route.params.subscribe(params => {
       const roleId = params['role'];
       this.getRolesService
-        .getRoles()
+        .getSingleRole(roleId)
         .subscribe(
-          roles => this.role = roles[roleId],
+          role => this.role = role,
           err => console.log(err),
           () => {
             this.permissions = this.getPermissionsService.getPermissions();
           }
-          );
+        );
     });
   }
 
