@@ -34,6 +34,17 @@ router.get("/users/:id", function(req, res) {
   });
 });
 
+router.get("/roles/:id", function(req, res) {
+  let id = req.params.id;
+  RolesModel.findById(id, function(err, role) {
+    if (err) {
+      handleError(res, err.message, "Failed to get role");
+    } else {
+      return res.status(200).json(role)
+    }
+  });
+});
+
 router.get("/roles", function(req, res) {
   RolesModel.find({}, function(err, roles) {
     if (err) {
@@ -58,7 +69,7 @@ router.post("/roles", function(req, res) {
   const newRole = RolesModel(req.body);
   newRole.save(function(err) {
     if (err) {
-      throw err;
+      handleError(res, err.message, "Failed to create role");
     } else {
       return res.status(201).json();
     }
@@ -80,7 +91,7 @@ router.post("/users", function(req, res) {
   const newUser = UserModel(req.body);
   newUser.save(function(err) {
     if (err) {
-      throw err;
+      handleError(res, err.message, "Failed to create user");
     } else {
       res.status(200).json();
     }
@@ -103,7 +114,7 @@ router.patch("/users/delete/:id", function(req, res) {
   let id = req.params.id;
   UserModel.findByIdAndUpdate(id, {isActive: 'false'}, function(err) {
     if (err) {
-      handleError(res, err.message, "Failed to update user");
+      handleError(res, err.message, "Failed to delete user");
     } else {
       return res.status(200).json();
     }

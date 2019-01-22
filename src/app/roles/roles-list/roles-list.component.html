@@ -25,7 +25,7 @@
           <h6>{{ role.permissions.toString().split(',').join(', ') }}</h6>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary" routerLink="/roles/{{ role.id }}">Update</button>
+            <button type="submit" class="btn btn-primary" routerLink="/roles/{{ role._id }}">Update</button>
             <button type="submit" (click)="updateRoleIdToBeDeleted(role.id)" data-toggle="modal" data-target="#deleteRoleModal" class="btn btn-danger float-right">Delete</button>
         </div>
         <div class="modal fade" id="deleteRoleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
