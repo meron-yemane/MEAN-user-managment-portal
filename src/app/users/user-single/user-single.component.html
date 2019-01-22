@@ -7,7 +7,7 @@
           <button type="button" class="btn btn-primary">Edit User</button>
         </a>
       </div>  
-      <h5>Roll(s): {{ user.roles }}</h5>
+      <h5>Roll(s): {{ user.roles.toString().split(',').join(', ') }}</h5>
       <h5>Email: {{ user.email }}</h5>
       <h5>Username: {{ user.login }}</h5>
     </div>  
