@@ -50,7 +50,7 @@ export class RolesSingleComponent implements OnInit {
   }
 
   processRoleEditForm() {
-    this.editRoleService.editRole(this.role, this.role.id).subscribe({
+    this.editRoleService.editRole(this.role, this.role._id).subscribe({
       next: x => console.log('Observers next value: ' + x),
       error: err => console.log(err),
       complete: () => {

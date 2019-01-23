@@ -11,13 +11,13 @@ export class EditRoleService {
       'Content-Type':  'application/json'
     })
   };
-  apiUrl = 'http://localhost:3000/roles/';
+  apiUrl = '/api/roles/';
 
   constructor(
     private http: HttpClient
   ) { }
 
   editRole(role: Object, roleId: number): Observable<Object> {
-    return this.http.put<Object>(`${this.apiUrl}` + roleId, role, this.httpOptions);
+    return this.http.patch<Object>(`${this.apiUrl}` + roleId, role, this.httpOptions);
   }
 }
