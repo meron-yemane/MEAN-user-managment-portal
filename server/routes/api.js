@@ -112,7 +112,7 @@ router.patch("/users/:id", function(req, res) {
 
 router.patch("/roles/:id", function(req, res) {
   let id = req.params.id;
-  UserModel.findByIdAndUpdate(id, req.body, function(err) {
+  RolesModel.findByIdAndUpdate(id, req.body, function(err) {
     if (err) {
       handleError(res, err.message, "Failed to update user");
     } else {
