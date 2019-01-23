@@ -12,7 +12,12 @@ import { GetRolesService } from 'src/app/roles/get-roles.service';
   styleUrls: ['./user-edit.component.scss']
 })
 export class UserEditComponent implements OnInit {
-  user;
+  user: any = {
+    name: null,
+    email: null,
+    login: null,
+    roles: Object
+  };
   roles: {};
   rolesError: Boolean = false;
   showSuccessAlert: Boolean = false;

@@ -11,7 +11,9 @@ import { GetPermissionsService } from '../get-permissions.service';
   styleUrls: ['./roles-single.component.scss']
 })
 export class RolesSingleComponent implements OnInit {
-  role;
+  role: any = {
+    name: null
+  };
   permissions: {};
   permissionsError: Boolean = false;
   showSuccessAlert: Boolean = false;
