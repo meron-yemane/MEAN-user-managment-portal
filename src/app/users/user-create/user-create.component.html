@@ -17,9 +17,12 @@
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input required class="form-control" type="email" name="email" id="email" [(ngModel)]="user.email" #emailVariable="ngModel">
-      <div class="text-danger" *ngIf="emailVariable.invalid && emailVariable.dirty">
-          Needs to be a valid email.
+      <input required email class="form-control" type="email" name="email" id="email" [(ngModel)]="user.email" #emailVariable="ngModel">
+      <div class="text-danger" *ngIf="emailVariable.errors?.required && emailVariable.dirty">
+        Email is required.
+      </div>
+      <div class="text-danger" *ngIf="emailVariable.errors?.email && emailVariable.dirty">
+        Email is invalid.
       </div>
     </div>
     <div class="form-group">
