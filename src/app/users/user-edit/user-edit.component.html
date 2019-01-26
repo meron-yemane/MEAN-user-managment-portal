@@ -24,9 +24,12 @@
       <!-- email -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input required type="email" class="form-control" id="email" value="{{ user.email }}" name="email" [(ngModel)]="user.email" #emailVariable="ngModel">
-        <div class="text-danger" *ngIf="emailVariable.invalid && emailVariable.dirty">
-            Needs to be a valid email.
+        <input required email type="email" class="form-control" id="email" value="{{ user.email }}" name="email" [(ngModel)]="user.email" #emailVariable="ngModel">
+        <div class="text-danger" *ngIf="emailVariable.errors?.required && emailVariable.dirty">
+          Email is required.
+        </div>
+        <div class="text-danger" *ngIf="emailVariable.errors?.email && emailVariable.dirty">
+          Email is invalid.
         </div>
       </div>
   
